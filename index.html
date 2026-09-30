@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <div class="brand">
+                <div class="brand-icon">▣</div>
+                <div>
+                    <h1>Expense <span>Tracker</span></h1>
+                    <p>Manage your income and expenses easily</p>
+                </div>
+            </div>
+        </header>
+
+        <section class="summary">
+
+            <div class="card income-card">
+                <div class="card-icon">↑</div>
+                <div>
+                    <h3>Total Income</h3>
+                    <p id="totalIncome">₹0.00</p>
+                </div>
+            </div>
+
+            <div class="card expense-card">
+                <div class="card-icon">↓</div>
+                <div>
+                    <h3>Total Expenses</h3>
+                    <p id="totalExpense">₹0.00</p>
+                </div>
+            </div>
+
+            <div class="card balance-card">
+                <div class="card-icon">₹</div>
+                <div>
+                    <h3>Current Balance</h3>
+                    <p id="balance">₹0.00</p>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="form-section">
+
+            <div class="section-title">
+                <div class="section-icon">+</div>
+                <div>
+                    <h2>Add Transaction</h2>
+                    <p>Enter your transaction details below</p>
+                </div>
+            </div>
+
+            <div id="errorMessage" class="error-message"></div>
+
+            <form id="transactionForm">
+
+                <div class="form-group">
+                    <label for="type">Type</label>
+                    <select id="type" required>
+                        <option value="">Select Type</option>
+                        <option value="income">Income</option>
+                        <option value="expense">Expense</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input
+                        type="number"
+                        id="amount"
+                        placeholder="Enter amount"
+                        min="1"
+                        step="0.01"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" required>
+                        <option value="">Select Category</option>
+                        <option value="Food">Food</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Bills">Bills</option>
+                        <option value="Salary">Salary</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" required>
+                </div>
+
+                <div class="form-group description-group">
+                    <label for="description">Description</label>
+                    <input
+                        type="text"
+                        id="description"
+                        placeholder="Enter description"
+                        maxlength="100"
+                        required
+                    >
+                </div>
+
+                <button type="submit" id="submitBtn">
+                    + &nbsp; Add Transaction
+                </button>
+
+            </form>
+
+        </section>
+
+        <section class="analytics-section">
+
+            <div class="analytics-header">
+                <div>
+                    <h2>Monthly Expense Summary</h2>
+                    <p>View your expenses for a selected month</p>
+                </div>
+
+                <input type="month" id="monthSelector">
+            </div>
+
+            <div class="monthly-summary">
+
+                <div class="monthly-box">
+                    <span>Selected Month</span>
+                    <strong id="selectedMonth">-</strong>
+                </div>
+
+                <div class="monthly-box">
+                    <span>Monthly Expenses</span>
+                    <strong id="monthlyExpense">₹0.00</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="analytics-section">
+
+            <div class="analytics-header">
+                <div>
+                    <h2>Category-wise Expenses</h2>
+                    <p>See where your money is being spent</p>
+                </div>
+            </div>
+
+            <div id="categoryChart" class="category-chart"></div>
+
+        </section>
+
+        <section class="filter-section">
+
+            <div class="transaction-heading">
+                <div class="filter-icon">⌄</div>
+                <div>
+                    <h2>Transactions</h2>
+                    <p>Filter your transactions</p>
+                </div>
+            </div>
+
+            <div class="filters">
+
+                <select id="filterType">
+                    <option value="all">All Transactions</option>
+                    <option value="income">Income</option>
+                    <option value="expense">Expense</option>
+                </select>
+
+                <select id="filterCategory">
+                    <option value="all">All Categories</option>
+                    <option value="Food">Food</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Bills">Bills</option>
+                    <option value="Salary">Salary</option>
+                    <option value="Other">Other</option>
+                </select>
+
+            </div>
+
+        </section>
+
+        <section class="transactions">
+
+            <div id="transactionList"></div>
+
+            <p id="emptyMessage">
+                No transactions yet.
+            </p>
+
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
